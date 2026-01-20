@@ -1,0 +1,28 @@
+# Data configuration for 3-class Food-11 subset
+
+dataset:
+  name: food11_3class
+  root_dir: data/raw
+  num_classes: 3
+  classes:
+    - Bread
+    - Dairy_product
+    - Dessert
+  
+  # Image settings
+  image_size: 224
+  mean: [0.485, 0.456, 0.406]  # ImageNet stats
+  std: [0.229, 0.224, 0.225]
+
+  # Data splits
+  splits:
+    train: training
+    val: validation
+    test: evaluation
+
+# Dataloader settings
+dataloader:
+  batch_size: 32
+  num_workers: 2
+  pin_memory: true
+  shuffle_train: true

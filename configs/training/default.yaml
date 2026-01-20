@@ -1,0 +1,44 @@
+# Default training configuration
+
+# Model settings
+model:
+  name: resnet18
+  num_classes: 3
+  pretrained: true
+  freeze_backbone: false
+
+# Training settings
+training:
+  num_epochs: 5
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+
+# Optimizer
+optimizer:
+  name: adam
+  betas: [0.9, 0.999]
+
+# Data settings
+data:
+  root_dir: data/raw
+  classes:
+    - Bread
+    - Dairy_product
+    - Dessert
+  num_workers: 2
+  image_size: 224
+
+# W&B settings
+wandb:
+  project: food-classification
+  entity: null  # Your W&B username (or leave null)
+  name: null  # Run name (auto-generated if null)
+  tags:
+    - baseline
+    - resnet18
+
+# Paths
+paths:
+  save_dir: models
+  output_dir: outputs

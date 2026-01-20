@@ -1,0 +1,44 @@
+# Quick test configuration (fast training for testing)
+
+# Model settings
+model:
+  name: resnet18
+  num_classes: 3
+  pretrained: true
+  freeze_backbone: true  # Freeze for faster training
+
+# Training settings
+training:
+  num_epochs: 2  # Just 2 epochs
+  batch_size: 16  # Smaller batch
+  learning_rate: 0.01  # Higher LR since frozen
+  weight_decay: 0.0001
+
+# Optimizer
+optimizer:
+  name: adam
+  betas: [0.9, 0.999]
+
+# Data settings
+data:
+  root_dir: data/raw
+  classes:
+    - Bread
+    - Dairy_product
+    - Dessert
+  num_workers: 0  # No multiprocessing (faster for small tests)
+  image_size: 224
+
+# W&B settings
+wandb:
+  project: food-classification
+  entity: null
+  name: quick_test
+  tags:
+    - test
+    - frozen_backbone
+
+# Paths
+paths:
+  save_dir: models
+  output_dir: outputs
